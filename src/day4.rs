@@ -48,7 +48,7 @@ pub fn day4part1() {
                     }
                 }
 
-                println!("res: {}, sum {}, last: {}", sum * e, sum, e);
+                println!("res: {}", sum * e);
                 return;
             }
         }
@@ -112,7 +112,7 @@ pub fn day4part2() {
                         }
                     }
 
-                    println!("res: {}, sum {}, last: {}, index: {}", sum * e, sum, e, _i);
+                    println!("res: {}", sum * e);
                     return;
                 }
                 let h0 = eh[g].0;

@@ -37,10 +37,7 @@ pub fn day3part1() {
     }
 
     println!(
-        "{:?}, low: {}, high: {}, res: {}",
-        eht,
-        low,
-        hight,
+        "res: {}",
         low * hight
     );
 }
@@ -174,7 +171,7 @@ pub fn day3part2() {
         }
     }
 
-    println!("low: {}, high: {}, res: {}", l, h, l * h);
+    println!("res: {}", l * h);
 }
 
 fn process_string(a: &mut ARENA, x: String) {

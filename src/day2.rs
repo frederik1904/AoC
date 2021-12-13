@@ -18,7 +18,7 @@ pub fn day2part1() {
         }
     });
 
-    println!("x: {}, y: {}, res: {}", x, y, x*y)
+    println!("res: {}", x*y)
 }
 
 pub fn day2part2() {
@@ -45,5 +45,5 @@ pub fn day2part2() {
         }
     });
 
-    println!("x: {}, y: {}, res: {}", x, y, x*y)
+    println!("res: {}",x*y)
 }

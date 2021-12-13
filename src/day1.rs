@@ -6,7 +6,7 @@ pub fn day1part1() {
     .map(|x| x.parse::<i32>().unwrap())
     .fold((0,0), |acc, x| (acc.0 + if x > acc.1 {1} else {0}, x));
 
-    println!("{}", res.0);
+    println!("res: {}", res.0);
 }
 
 pub fn day1part2() {
@@ -26,5 +26,5 @@ pub fn day1part2() {
         a = b;
     }
 
-    println!("{}", sum);
+    println!("res: {}", sum);
 }

@@ -37,7 +37,7 @@ pub fn day5part1() {
 
     let res: Vec<_> = board.values().filter(|&&f| f > 1).collect();
 
-    println!("{}", res.len());
+    println!("res: {}", res.len());
 }
 
 pub fn day5part2() {
@@ -76,5 +76,5 @@ pub fn day5part2() {
     });
 
     let res: Vec<_> = board.values().filter(|&&f| f > 1).collect();
-    println!("{}", res.len());
+    println!("res: {}", res.len());
 }
