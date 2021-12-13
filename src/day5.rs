@@ -1,5 +1,5 @@
 use crate::util;
-use std::collections::HashMap;
+use std::{collections::HashMap};
 
 fn str_to_points(v: &str) -> Vec<i32> {
     v.split(",").map(|f| f.parse::<i32>().unwrap()).collect()
@@ -19,17 +19,17 @@ pub fn day5part1() {
         if x1 == x2 {
             for i in (y1.min(y2) as usize)..=(y2.max(y1) as usize) {
                 let key = format!("{},{}", x1, i);
-                match board.get(&key) {
+                match &board.get(&key) {
                     None => board.insert(key, 1),
-                    Some(v) => board.insert(key, v + 1),
+                    Some(&v) => board.insert(key, v + 1),
                 };
             }
         } else if y1 == y2 {
             for i in (x1.min(x2) as usize)..=(x2.max(x1) as usize) {
                 let key = format!("{},{}", i, y1);
-                match board.get(&key) {
+                match &board.get(&key) {
                     None => board.insert(key, 1),
-                    Some(v) => board.insert(key, v + 1),
+                    Some(&v) => board.insert(key, v + 1),
                 };
             }
         }
@@ -47,17 +47,17 @@ pub fn day5part2() {
         if x1 == x2 {
             for i in (y1.min(y2) as usize)..=(y2.max(y1) as usize) {
                 let key = format!("{},{}", x1, i);
-                match board.get(&key) {
+                match &board.get(&key) {
                     None => board.insert(key, 1),
-                    Some(v) => board.insert(key, v + 1),
+                    Some(&v) => board.insert(key, v + 1),
                 };
             }
         } else if y1 == y2 {
             for i in (x1.min(x2) as usize)..=(x2.max(x1) as usize) {
                 let key = format!("{},{}", i, y1);
-                match board.get(&key) {
+                match &board.get(&key) {
                     None => board.insert(key, 1),
-                    Some(v) => board.insert(key, v + 1),
+                    Some(&v) => board.insert(key, v + 1),
                 };
             }
         } else {
@@ -67,9 +67,9 @@ pub fn day5part2() {
             for i in 0..=(i32::abs(x1-x2)) {
                 let modified_i = modifier * i;
                 let key = format!("{},{}", x + i, y + modified_i);
-                match board.get(&key) {
+                match &board.get(&key) {
                     None => board.insert(key, 1),
-                    Some(v) => board.insert(key, v + 1),
+                    Some(&v) => board.insert(key, v + 1),
                 };
             }
         }

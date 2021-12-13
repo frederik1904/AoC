@@ -1,4 +1,3 @@
-use core::num;
 use std::vec;
 
 use crate::util;
@@ -32,7 +31,7 @@ pub fn day4part1() {
         }
     }
     let mut curr = 0;
-    for (i, e) in numbers.iter().enumerate() {
+    for (_, e) in numbers.iter().enumerate() {
         curr |= 2i128.pow(*e);
         for (_, te) in eh.iter().enumerate() {
             if te.1 & curr == te.1 {
