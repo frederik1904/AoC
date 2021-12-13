@@ -4,6 +4,7 @@ use crate::day3::{day3part1, day3part2};
 use crate::day4::{day4part1, day4part2};
 use crate::day5::{day5part1, day5part2};
 use crate::day6::{day6part2, day6part1};
+use crate::day7::{day7part1, day7part2};
 
 mod day1;
 mod day2;
@@ -11,6 +12,7 @@ mod day3;
 mod day4;
 mod day5;
 mod day6;
+mod day7;
 mod util;
 
 fn main() {
@@ -49,4 +51,10 @@ fn main() {
     day6part1();
     println!("Part 2:");
     day6part2();
+
+    println!("Day 7");
+    println!("Part 1:");
+    day7part1();
+    println!("Part 2:");
+    day7part2();
 }
