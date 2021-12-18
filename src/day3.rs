@@ -1,8 +1,10 @@
-use crate::util;
+use std::time::Duration;
 
-pub fn day3part1() {
+use crate::util::{read_file, RESULT};
+
+pub fn day3part1() -> RESULT {
     let mut eht = Vec::new();
-    let res: Vec<String> = util::read_file("day3part1")
+    let res: Vec<String> = read_file("day3part1")
         .lines()
         .map(|f| f.to_string())
         .collect();
@@ -35,11 +37,12 @@ pub fn day3part1() {
             low += 2i32.pow((i as i32).try_into().unwrap())
         }
     }
-
-    println!(
-        "res: {}",
-        low * hight
-    );
+    RESULT {
+        name: "D3P1".to_string(),
+        result: (low * hight) as i64,
+        time: Duration::from_micros(0),
+        percentage: 0f32,
+    }
 }
 
 #[derive(Clone, Debug)]
@@ -119,7 +122,7 @@ impl ARENA {
     }
 }
 
-pub fn day3part2() {
+pub fn day3part2() -> RESULT {
     let mut a = ARENA {
         nodes: vec![NODE {
             left: None,
@@ -129,7 +132,7 @@ pub fn day3part2() {
         }],
     };
 
-    util::read_file("day3part1")
+    read_file("day3part1")
         .lines()
         .map(|f| f.to_string())
         .for_each(|x| process_string(&mut a, x));
@@ -139,9 +142,12 @@ pub fn day3part2() {
     let mut low_val: Vec<i32> = vec![];
 
     while high.left.is_some() || high.right.is_some() {
-        let (l_h, r_h): (Option<NODE>, Option<NODE>) = (a.get_left(high.clone()), a.get_right(high.clone()));
-        let (l_l, r_l): (Option<NODE>, Option<NODE>) = (a.get_left(low.clone()), a.get_right(low.clone()));
-        if l_h.is_none() || (r_h.is_some() && r_h.clone().unwrap().count >= l_h.clone().unwrap().count)
+        let (l_h, r_h): (Option<NODE>, Option<NODE>) =
+            (a.get_left(high.clone()), a.get_right(high.clone()));
+        let (l_l, r_l): (Option<NODE>, Option<NODE>) =
+            (a.get_left(low.clone()), a.get_right(low.clone()));
+        if l_h.is_none()
+            || (r_h.is_some() && r_h.clone().unwrap().count >= l_h.clone().unwrap().count)
         {
             high = r_h.unwrap().clone();
             high_val.push(1);
@@ -150,7 +156,9 @@ pub fn day3part2() {
             high_val.push(0);
         }
 
-        if l_l.is_none() || (r_l.is_some() && r_l.clone().unwrap().count < l_l.clone().unwrap().count) {
+        if l_l.is_none()
+            || (r_l.is_some() && r_l.clone().unwrap().count < l_l.clone().unwrap().count)
+        {
             low = r_l.unwrap().clone();
             low_val.push(1);
         } else {
@@ -171,13 +179,18 @@ pub fn day3part2() {
         }
     }
 
-    println!("res: {}", l * h);
+    RESULT {
+        name: "D3P2".to_string(),
+        result: (l * h) as i64,
+        time: Duration::from_micros(0),
+        percentage: 0f32,
+    }
 }
 
 fn process_string(a: &mut ARENA, x: String) {
     let mut curr_node = a.nodes[0].clone();
     for c in x.chars() {
-       curr_node =  match c {
+        curr_node = match c {
             '0' => {
                 let tmp = a.get_left(curr_node.clone());
                 if tmp.is_none() {

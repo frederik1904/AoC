@@ -1,10 +1,12 @@
-use std::collections::{HashMap, HashSet};
+use crate::util::{read_file, RESULT};
+use std::{
+    collections::{HashMap, HashSet},
+    time::Duration,
+};
 
-use crate::util;
-
-pub fn day8part1() {
+pub fn day8part1() -> RESULT {
     let unique_lens = vec![2, 4, 3, 7];
-    let sum: usize = util::read_file("day8part1")
+    let sum: usize = read_file("day8part1")
         .lines()
         .map(|f| f.split(" | ").last().unwrap())
         .map(|f| {
@@ -15,7 +17,12 @@ pub fn day8part1() {
         })
         .sum();
 
-    println!("res: {}", sum);
+    RESULT {
+        name: "D8P1".to_string(),
+        result: (sum) as i64,
+        time: Duration::from_micros(0),
+        percentage: 0f32,
+    }
 }
 
 // Transform char to digit
@@ -23,7 +30,7 @@ fn d(d: u8) -> u8 {
     2u8.pow((d - b'a') as u32)
 }
 
-pub fn day8part2() {
+pub fn day8part2() -> RESULT {
     let unique_lens = vec![
         (6, d(b'a') + d(b'b') + d(b'c') + d(b'e') + d(b'f') + d(b'g')), // 0
         (2, d(b'c') + d(b'f')),                                         // 1
@@ -39,7 +46,7 @@ pub fn day8part2() {
         ), // 8
         (6, d(b'a') + d(b'b') + d(b'c') + d(b'd') + d(b'f') + d(b'g')), // 9
     ];
-    let result: i64 = util::read_file("day8part1")
+    let result: i64 = read_file("day8part1")
         .lines()
         .map(|f| {
             let mut segment_map: HashMap<u8, u8> = HashMap::new();
@@ -71,10 +78,7 @@ pub fn day8part2() {
 
             let one = segment_map.get(&unique_lens[1].1).unwrap().clone();
             let four = segment_map.get(&unique_lens[4].1).unwrap().clone();
-            let seven = segment_map
-                .get(&unique_lens[7].1)
-                .unwrap()
-                .clone();
+            let seven = segment_map.get(&unique_lens[7].1).unwrap().clone();
             let eight = segment_map.get(&unique_lens[8].1).unwrap().clone();
 
             let six = undecided
@@ -140,20 +144,23 @@ pub fn day8part2() {
             segment_map.insert(eight, 8);
             segment_map.insert(*nine, 9);
 
-            last
-                .split(" ")
-                .map(|st| 
-                   segment_map
+            last.split(" ")
+                .map(|st| {
+                    segment_map
                         .get(
                             &st.chars()
-                    .map(|t| t as u8 - b'a')
-                    .fold(0u8, |acc, t| (acc + 2u8.pow(t as u32)))
+                                .map(|t| t as u8 - b'a')
+                                .fold(0u8, |acc, t| (acc + 2u8.pow(t as u32))),
                         )
                         .unwrap()
-                )
+                })
                 .fold(0i64, |acc, &f| acc * 10 + f as i64)
         })
         .sum();
-
-    println!("res: {}", result)
+    RESULT {
+        name: "D8P2".to_string(),
+        result: (result) as i64,
+        time: Duration::from_micros(0),
+        percentage: 0f32,
+    }
 }

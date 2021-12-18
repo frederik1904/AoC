@@ -1,3 +1,7 @@
+extern  crate stopwatch;
+use stopwatch::Stopwatch;
+use util::RESULT;
+
 use crate::day1::{day1part1, day1part2};
 use crate::day2::{day2part1, day2part2};
 use crate::day3::{day3part1, day3part2};
@@ -6,6 +10,7 @@ use crate::day5::{day5part1, day5part2};
 use crate::day6::{day6part2, day6part1};
 use crate::day7::{day7part1, day7part2};
 use crate::day8::{day8part1, day8part2};
+use crate::day9::{day9part1, day9part2};
 
 mod day1;
 mod day2;
@@ -15,54 +20,48 @@ mod day5;
 mod day6;
 mod day7;
 mod day8;
+mod day9;
 mod util;
 
 fn main() {
-    println!("Day 1");
-    println!("Part 1:");
-    day1part1();
-    println!("Part 2:");
-    day1part2();
+    let days: Vec<fn() -> RESULT> = vec!{
+        day1part1,
+        day1part2,
+        day2part1,
+        day2part2,
+        day3part1,
+        day3part2,
+        day4part1,
+        day4part2,
+        day5part1,
+        day5part2,
+        day6part1,
+        day6part2,
+        day7part1,
+        day7part2,
+        day8part1,
+        day8part2,
+        day9part1,
+        day9part2,
+    };
 
-    println!("Day 2");
-    println!("Part 1:");
-    day2part1();
-    println!("Part 2:");
-    day2part2();
+    let mut total_time = 0;
+    let mut sw = Stopwatch::new();
+    let mut results = vec![];
+    for d in days {
+        sw.reset();
+        sw.start();
+        let mut r = d();
+        sw.stop();
+        r.time = sw.elapsed();
+        results.push(r);
+        total_time += sw.elapsed().as_nanos()
+    }
 
-    println!("Day 3");
-    println!("Part 1:");
-    day3part1();
-    println!("Part 2:");
-    day3part2();
-
-    println!("Day 4");
-    println!("Part 1:");
-    day4part1();
-    println!("Part 2:");
-    day4part2();
-
-    println!("Day 5");
-    println!("Part 1:");
-    day5part1();
-    println!("Part 2:");
-    day5part2();
-
-    println!("Day 6");
-    println!("Part 1:");
-    day6part1();
-    println!("Part 2:");
-    day6part2();
-
-    println!("Day 7");
-    println!("Part 1:");
-    day7part1();
-    println!("Part 2:");
-    day7part2();
-
-    println!("Day 8");
-    println!("Part 1:");
-    day8part1();
-    println!("Part 2:");
-    day8part2();
+    for mut r in results {
+        let p = ((r.time.as_nanos() as f64 / total_time as f64) as f64 * 100f64) as f32;
+        r.percentage = p;
+        println!("{}", r.to_string());
+    }
+    
 }

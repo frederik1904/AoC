@@ -1,5 +1,5 @@
-use crate::util;
-use std::{collections::HashMap};
+use crate::util::{read_file, RESULT};
+use std::{collections::HashMap, time::Duration};
 
 fn str_to_points(v: &str) -> Vec<i32> {
     v.split(",").map(|f| f.parse::<i32>().unwrap()).collect()
@@ -12,9 +12,9 @@ fn process_str(s: &str) -> (i32, i32, i32, i32) {
     (points1[0], points1[1], points2[0], points2[1])
 }
 
-pub fn day5part1() {
+pub fn day5part1() -> RESULT {
     let mut board: HashMap<String, i32> = HashMap::new();
-    util::read_file("day5part1").lines().for_each(|s| {
+    read_file("day5part1").lines().for_each(|s| {
         let (x1, y1, x2, y2) = process_str(s);
         if x1 == x2 {
             for i in (y1.min(y2) as usize)..=(y2.max(y1) as usize) {
@@ -36,13 +36,17 @@ pub fn day5part1() {
     });
 
     let res: Vec<_> = board.values().filter(|&&f| f > 1).collect();
-
-    println!("res: {}", res.len());
+    RESULT {
+        name: "D5P1".to_string(),
+        result: res.len() as i64,
+        time: Duration::from_micros(0),
+        percentage: 0f32,
+    }
 }
 
-pub fn day5part2() {
+pub fn day5part2() -> RESULT {
     let mut board: HashMap<String, i32> = HashMap::new();
-    util::read_file("day5part1").lines().for_each(|s| {
+    read_file("day5part1").lines().for_each(|s| {
         let (x1, y1, x2, y2) = process_str(s);
         if x1 == x2 {
             for i in (y1.min(y2) as usize)..=(y2.max(y1) as usize) {
@@ -61,10 +65,12 @@ pub fn day5part2() {
                 };
             }
         } else {
-            let (x,y, modifier) = 
-            if x1 < x2 {(x1, y1, if y1 < y2 {1} else {-1})} 
-            else {(x2,y2, if y2 < y1 {1} else {-1})};
-            for i in 0..=(i32::abs(x1-x2)) {
+            let (x, y, modifier) = if x1 < x2 {
+                (x1, y1, if y1 < y2 { 1 } else { -1 })
+            } else {
+                (x2, y2, if y2 < y1 { 1 } else { -1 })
+            };
+            for i in 0..=(i32::abs(x1 - x2)) {
                 let modified_i = modifier * i;
                 let key = format!("{},{}", x + i, y + modified_i);
                 match &board.get(&key) {
@@ -76,5 +82,10 @@ pub fn day5part2() {
     });
 
     let res: Vec<_> = board.values().filter(|&&f| f > 1).collect();
-    println!("res: {}", res.len());
+    RESULT {
+        name: "D5P2".to_string(),
+        result: res.len() as i64,
+        time: Duration::from_micros(0),
+        percentage: 0f32,
+    }
 }

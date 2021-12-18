@@ -1,9 +1,9 @@
-use std::vec;
+use std::{time::Duration, vec};
 
-use crate::util;
+use crate::util::{read_file, RESULT};
 
-pub fn day4part1() {
-    let lines: Vec<String> = util::read_file("day4part1")
+pub fn day4part1() -> RESULT {
+    let lines: Vec<String> = read_file("day4part1")
         .lines()
         .map(|f| f.to_string())
         .collect();
@@ -48,15 +48,20 @@ pub fn day4part1() {
                     }
                 }
 
-                println!("res: {}", sum * e);
-                return;
+                return RESULT {
+                    name: "D4P1".to_string(),
+                    result: (sum * e) as i64,
+                    time: Duration::from_micros(0),
+                    percentage: 0f32,
+                };
             }
         }
     }
+    panic!("I have failed you")
 }
 
-pub fn day4part2() {
-    let lines: Vec<String> = util::read_file("day4part1")
+pub fn day4part2() -> RESULT {
+    let lines: Vec<String> = read_file("day4part1")
         .lines()
         .map(|f| f.to_string())
         .collect();
@@ -82,11 +87,14 @@ pub fn day4part2() {
                 eh.push((i, n));
             }
         }
-        
+
         for t in 0..5 {
-            let mut tmp:i128 = 0;
+            let mut tmp: i128 = 0;
             for j in 0..5 {
-                let test: Vec<u32> = e[j].split_whitespace().map(|f| f.parse::<u32>().unwrap()).collect();
+                let test: Vec<u32> = e[j]
+                    .split_whitespace()
+                    .map(|f| f.parse::<u32>().unwrap())
+                    .collect();
                 tmp |= 2i128.pow(test[t]);
             }
             eh.push((i, tmp));
@@ -112,8 +120,12 @@ pub fn day4part2() {
                         }
                     }
 
-                    println!("res: {}", sum * e);
-                    return;
+                    return RESULT {
+                        name: "D4P2".to_string(),
+                        result: (sum * e) as i64,
+                        time: Duration::from_micros(0),
+                        percentage: 0f32,
+                    };
                 }
                 let h0 = eh[g].0;
                 eh = eh.iter().filter(|(f, _)| *f != h0).map(|&f| f).collect();
@@ -123,4 +135,5 @@ pub fn day4part2() {
             }
         }
     }
+    panic!("I have failed you")
 }
