@@ -12,6 +12,7 @@ use crate::day7::{day7part1, day7part2};
 use crate::day8::{day8part1, day8part2};
 use crate::day9::{day9part1, day9part2};
 use crate::day10::{day10part1, day10part2};
+use crate::day11::{day11part1, day11part2};
 
 mod day1;
 mod day2;
@@ -23,6 +24,7 @@ mod day7;
 mod day8;
 mod day9;
 mod day10;
+mod day11;
 mod util;
 
 fn main() {
@@ -47,6 +49,8 @@ fn main() {
         day9part2,
         day10part1,
         day10part2,
+        day11part1,
+        day11part2,
     };
 
     let mut total_time = 0;
