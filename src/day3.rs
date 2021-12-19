@@ -4,7 +4,7 @@ use crate::util::{read_file, RESULT};
 
 pub fn day3part1() -> RESULT {
     let mut eht = Vec::new();
-    let res: Vec<String> = read_file("day3part1")
+    let res: Vec<String> = read_file("day3")
         .lines()
         .map(|f| f.to_string())
         .collect();
@@ -132,7 +132,7 @@ pub fn day3part2() -> RESULT {
         }],
     };
 
-    read_file("day3part1")
+    read_file("day3")
         .lines()
         .map(|f| f.to_string())
         .for_each(|x| process_string(&mut a, x));

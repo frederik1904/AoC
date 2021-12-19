@@ -14,7 +14,7 @@ fn process_str(s: &str) -> (i32, i32, i32, i32) {
 
 pub fn day5part1() -> RESULT {
     let mut board: HashMap<String, i32> = HashMap::new();
-    read_file("day5part1").lines().for_each(|s| {
+    read_file("day5").lines().for_each(|s| {
         let (x1, y1, x2, y2) = process_str(s);
         if x1 == x2 {
             for i in (y1.min(y2) as usize)..=(y2.max(y1) as usize) {
@@ -46,7 +46,7 @@ pub fn day5part1() -> RESULT {
 
 pub fn day5part2() -> RESULT {
     let mut board: HashMap<String, i32> = HashMap::new();
-    read_file("day5part1").lines().for_each(|s| {
+    read_file("day5").lines().for_each(|s| {
         let (x1, y1, x2, y2) = process_str(s);
         if x1 == x2 {
             for i in (y1.min(y2) as usize)..=(y2.max(y1) as usize) {

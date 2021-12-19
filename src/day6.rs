@@ -24,7 +24,7 @@ impl FISH {
 
 pub fn day6part1() -> RESULT {
     let mut fishes: Vec<FISH> = vec![];
-    read_file("day6part1").split(",").for_each(|f| {
+    read_file("day6").split(",").for_each(|f| {
         fishes.push(FISH {
             state: f.parse().unwrap(),
             amount: 1,
@@ -52,7 +52,7 @@ pub fn day6part1() -> RESULT {
 pub fn day6part2() -> RESULT {
     let mut fishes: Vec<FISH> = vec![];
     let mut numbers = vec![0; 6];
-    read_file("day6part1").split(",").for_each(|f| {
+    read_file("day6").split(",").for_each(|f| {
         let i = f.parse::<usize>().unwrap();
         numbers[i] += 1;
     });

@@ -3,7 +3,7 @@ use std::time::Duration;
 use crate::util::{read_file, RESULT};
 
 pub fn day7part1() -> RESULT {
-    let mut crab: Vec<i32> = read_file("day7part1")
+    let mut crab: Vec<i32> = read_file("day7")
         .split(",")
         .map(|f| f.parse::<i32>().unwrap())
         .collect();
@@ -20,7 +20,7 @@ pub fn day7part1() -> RESULT {
 }
 
 pub fn day7part2() -> RESULT {
-    let mut crab: Vec<i32> = read_file("day7part1")
+    let mut crab: Vec<i32> = read_file("day7")
         .split(",")
         .map(|f| f.parse::<i32>().unwrap())
         .collect();

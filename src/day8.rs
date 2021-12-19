@@ -6,7 +6,7 @@ use std::{
 
 pub fn day8part1() -> RESULT {
     let unique_lens = vec![2, 4, 3, 7];
-    let sum: usize = read_file("day8part1")
+    let sum: usize = read_file("day8")
         .lines()
         .map(|f| f.split(" | ").last().unwrap())
         .map(|f| {
@@ -46,7 +46,7 @@ pub fn day8part2() -> RESULT {
         ), // 8
         (6, d(b'a') + d(b'b') + d(b'c') + d(b'd') + d(b'f') + d(b'g')), // 9
     ];
-    let result: i64 = read_file("day8part1")
+    let result: i64 = read_file("day8")
         .lines()
         .map(|f| {
             let mut segment_map: HashMap<u8, u8> = HashMap::new();

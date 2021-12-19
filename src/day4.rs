@@ -3,7 +3,7 @@ use std::{time::Duration, vec};
 use crate::util::{read_file, RESULT};
 
 pub fn day4part1() -> RESULT {
-    let lines: Vec<String> = read_file("day4part1")
+    let lines: Vec<String> = read_file("day4")
         .lines()
         .map(|f| f.to_string())
         .collect();
@@ -61,7 +61,7 @@ pub fn day4part1() -> RESULT {
 }
 
 pub fn day4part2() -> RESULT {
-    let lines: Vec<String> = read_file("day4part1")
+    let lines: Vec<String> = read_file("day4")
         .lines()
         .map(|f| f.to_string())
         .collect();

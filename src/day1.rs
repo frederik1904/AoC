@@ -3,7 +3,7 @@ use std::time::Duration;
 use crate::util::{read_file, RESULT};
 
 pub fn day1part1() -> RESULT {
-    let res = read_file("day1part1")
+    let res = read_file("day1")
         .lines()
         .map(|x| x.parse::<i32>().unwrap())
         .fold((0, 0), |acc, x| (acc.0 + if x > acc.1 { 1 } else { 0 }, x));
@@ -17,7 +17,7 @@ pub fn day1part1() -> RESULT {
 }
 
 pub fn day1part2() -> RESULT {
-    let str = read_file("day1part1");
+    let str = read_file("day1");
     let nums = str
         .lines()
         .map(|x| x.parse::<i32>().unwrap())
