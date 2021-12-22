@@ -164,7 +164,7 @@ pub fn day13part2() -> RESULT {
     for y in 0..matrix.len() {
         for x in 0..matrix[y].len() {
             let t = matrix[y][x];
-            print!("{}", t)
+            print!("{}", if t == '#' {"#"} else {" "})
         }
         println!()
     }
