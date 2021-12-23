@@ -16,6 +16,7 @@ use crate::day11::{day11part1, day11part2};
 use crate::day12::{day12part1, day12part2};
 use crate::day13::{day13part1, day13part2};
 use crate::day14::{day14part1, day14part2};
+use crate::day15::{day15part1, day15part2};
 
 mod day1;
 mod day2;
@@ -31,6 +32,7 @@ mod day11;
 mod day12;
 mod day13;
 mod day14;
+mod day15;
 mod util;
 
 fn main() {
@@ -63,6 +65,8 @@ fn main() {
         day13part2,
         day14part1,
         day14part2,
+        day15part1,
+        day15part2,
     };
 
     let mut total_time = 0;
@@ -83,5 +87,5 @@ fn main() {
         r.percentage = p;
         println!("{}", r.to_string());
     }
-    
+    println!("Total time: {:.4}s", total_time as f64 / 1000000000f64);
 }

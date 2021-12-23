@@ -55,7 +55,7 @@ pub fn day14part1() -> RESULT {
 pub fn day14part2() -> RESULT {
     let lines: Vec<String> = read_file("day14").lines().map(|s| s.to_string()).collect();
 
-    let mut inp: Vec<char> = lines[0].chars().collect();
+    let inp: Vec<char> = lines[0].chars().collect();
 
     let mut mapping: HashMap<String, char> = HashMap::new();
 
@@ -79,7 +79,7 @@ pub fn day14part2() -> RESULT {
     let val: i64 = *combined_count.get(&inp[inp.len() - 1]).unwrap_or(&0);
     combined_count.insert(inp[inp.len() - 1], val + 1);
 
-    for i in 0..40 {
+    for _ in 0..40 {
         let mut n_combined: HashMap<String, i64> = HashMap::new();
         for (_, (k, v)) in combined.iter().enumerate() {
             let c = *mapping.get(k).unwrap();

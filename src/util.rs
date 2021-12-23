@@ -17,7 +17,7 @@ pub struct RESULT {
 impl ToString for RESULT {
     fn to_string(&self) -> String {
         format!(
-            "{} finished after {}ns ({:.4}%) with result: {}",
+            "{} finished after {}ns ({:.3}%) with result: {}",
             self.name,
             self.time.as_nanos(),
             self.percentage,
